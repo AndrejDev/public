@@ -21,7 +21,7 @@ public class PigLatinTranslator {
 	private final static String UPPER_PATTERN = "\\p{Upper}";
 
 	public void translate(File inputFile, File outputFile) {
-		LOGGER.info("Start translate string (word, sentence, or paragraph) into ìpig-latinî...");
+		LOGGER.info("Start translate string (word, sentence, or paragraph) into ‚Äúpig-latin‚Äù...");
 
 		StringBuilder pigLineBuilder, pigWordBuilder;
 		FileWriter fileWriter = null;
@@ -106,7 +106,7 @@ public class PigLatinTranslator {
 	}
 
 	private boolean canModify(String word) {
-		return !word.replaceAll(PUNCT_PATTERN, "").endsWith("way") && (isConsonant(word) || isVowel(word));
+		return !word.replaceAll(PUNCT_PATTERN + "*$", "").endsWith("way") && (isConsonant(word) || isVowel(word));
 	}
 
 	private boolean isConsonant(String word) {
